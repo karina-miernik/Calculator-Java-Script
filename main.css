@@ -22,107 +22,51 @@ body {
   padding:2rem;
 }
 
-.calculator{
-  display: grid;
+.calc{
+  display: flex;
+  flex-direction: column;
   width: 500px;
   height: auto;
   font-size:4rem;
   background-color:black;
-  padding:2rem;
   margin: 0 auto;
   color:white;
-  grid-template-rows:repeat(7, 1fr);
-  grid-template-columns:  repeat(4, 1fr);
-  grid-template-areas:var(--template);
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
+  grid-row:repeat(7,1fr);
+  grid-column:repeat(4,1fr);
+}
+.calc__icon{
+  background-color: rgb(97, 92, 92);
+text-align: start;
+padding-bottom: 2rem;
 }
 
-.calculator__value{
-  padding:0.5rem;
+.calc__output{
+  padding:4rem;
   background-color:rgb(97, 92, 92);
   color:rgb(233, 219, 221);
   font-size:2rem;
+  display:grid;
+  grid-row: 4fr;
+ 
+  text-align: end;
 }
-.outcome__upper,
-.outcome__down{
+
+
+.calc__input{
+  color:rgb(194, 107, 153);
+  font-size:5rem;
   background-color:rgb(49, 47, 47);
   text-align: end;
   padding:1rem;
-  padding-right:2rem;
+
   color:rgb(233, 219, 221);
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-.outcome__upper{
-  grid-area:upper;
-
-}
-.outcome__down{
-  grid-area:down;
-  color:rgb(194, 107, 153);
-  font-size:5rem;
+.calc__input > button{
+  padding:1rem ;
 }
          
-.--vaule-canc{
-  grid-area: C;
-}
-.--vaule-plusmin{
-  grid-area: plusmin;
-}
-.--vaule-perc{
-  grid-area: perc;
-}
-.--vaule-del{
-  grid-area: DEL;
-}
-.--vaule-7{
-  grid-area:seven;
-}
-.--vaule-8{
-  grid-area:eight;
-}
-.--vaule-9{
-  grid-area:nine;
-}
-.--vaule-divide{
-  grid-area:div;
-}
-.--vaule-4{
-  grid-area:four;
-}
-.--vaule-5{
-  grid-area:five;
-}
-.--vaule-6{
-  grid-area:six;
-}
-.--vaule-multiply{
-  grid-area:x;
-}
-.--vaule-1{
-  grid-area:one;
-}
-.--vaule-2{
-  grid-area: two;
-}
-.--vaule-3{
-  grid-area: three;
-}
-.--vaule-minus{
-grid-area: minus;
-}
-.--vaule-one{
-  grid-area:one;
-}
-.--vaule-dot{
-  grid-area:dott;
-}
-.--vaule-equal{
-  grid-area:eq;
-}
-.--vaule-plus{
-  grid-area:plus;
-}
-.--vaule-zero{
-  grid-area:zero;
-}
 
