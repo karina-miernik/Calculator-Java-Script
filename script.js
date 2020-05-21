@@ -10,16 +10,18 @@ calcInput.addEventListener('click', e => {
     if (e.target.matches('button')) {
         const value = e.target;
         const action = value.dataset.action;
-        const inputContent = calcInput.textContent;
+        const inputContent = value.textContent;
         const outputContent = output.textContent;
         if (!action) {
             if (outputContent === '0') {
+
                 output.textContent = inputContent;
             } else {
-                console.log(calcInput.textContent)
-                output.textContent = outputContent + inputContent;
+
+                output.textContent += inputContent;
             }
         }
+
         // if (
         //     action === 'multiply' ||
         //     action === 'divide' ||
@@ -28,9 +30,8 @@ calcInput.addEventListener('click', e => {
         //     action === 'multiply' ||
         //     action === 'percent' ||
         //     action === 'plus-min') {
-        //     console.log('.')
+        //     console.log('math')
         // }
-
         // if (action === 'decimal') {
         //     console.log('decimal')
         // }
