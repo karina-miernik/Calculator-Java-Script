@@ -10,40 +10,42 @@
 </head>
 
 <body>
+
+
+
     <div class="container">
-        <div class="title">
-            <h2>Calculator</h2>
-        </div>
-        <div class="calc">
 
-            <div class="calc__output">
-                0
-            </div>
-            <div class="calc__input">
+        <div class="calculator">
+            <div class="calculator__output">0</div>
 
+            <div class="calculator__input">
                 <button data-action="clear">C</button>
+                <button data-action="plusmin">+/-</button>
                 <button data-action="percent">%</button>
-                <button data-action="plus-min">+/-</button>
                 <button data-action="delete">DEL</button>
                 <button>7</button>
                 <button>8</button>
                 <button>9</button>
-                <button data-action="multiply">x</button>
+                <button class="input--operator" data-action="multiply">&times;</button>
                 <button>4</button>
                 <button>5</button>
                 <button>6</button>
-                <button data-action="divide">/</button>
+                <button class="input--operator" data-action="divide">÷</button>
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>
-                <button data-action="minus">-</button>
+                <button class="input--operator" data-action="subtract">-</button>
                 <button>0</button>
                 <button data-action="decimal">.</button>
-                <button data-action="equal">=</button>
-                <button data-action="plus">+</button>
+                <button class="input--equal" data-action="calculate">=</button>
+                <button class="input--operator" data-action="add">+</button>
             </div>
-            <script src="script.js">
-            </script>
+        </div>
+    </div>
+
+
+    <script src="script.js">
+    </script>
 </body>
 
 </html>

@@ -1,26 +1,32 @@
-
-const calculator = document.querySelector('.calc')
-const calcInput = calculator.querySelector('.calc__input')
-const output = calculator.querySelector('.calc__output')
-
+const calculator = document.querySelector('.calculator')
+const output = calculator.querySelector('.calculator__output')
+const inputs = calculator.querySelector('.calculator__input')
 
 
-
-calcInput.addEventListener('click', e => {
+inputs.addEventListener('click', e => {
     if (e.target.matches('button')) {
-        const value = e.target;
-        const action = value.dataset.action;
-        const inputContent = value.textContent;
-        const outputContent = output.textContent;
+        const input = e.target
+        const action = input.dataset.action
+        const inputContent = input.textContent
+        const outputNum = output.textContent
+
         if (!action) {
-            if (outputContent === '0') {
-
-                output.textContent = inputContent;
+            if (outputNum === '0') {
+                output.textContent = inputContent
             } else {
-
-                output.textContent += inputContent;
+                output.textContent = outputNum + inputContent
             }
         }
+        // if (!action) {
+        //     if (displayedNum === '0') {
+
+        //         display.textContent = keyContent;
+
+        //     } else {
+
+        //         display.textContent = displayedNum + keyContent;
+        //     }
+        // }
 
         // if (
         //     action === 'multiply' ||
