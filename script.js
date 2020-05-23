@@ -17,6 +17,39 @@ inputs.addEventListener('click', e => {
                 output.textContent = outputNum + inputContent
             }
         }
+
+        if (action === 'decimal') {
+            output.textContent = outputNum + '.'
+        }
+
+        if (action === 'clear') {
+            output.textContent = '0';
+        }
+
+        if (action === 'delete') {
+            console.log('delete')
+        }
+        if (action === 'percent') {
+            output.textContent = outputNum + '%'
+        }
+        // if (action === 'plusmin') {
+        //     if(outputNum>0)
+        //     output.textContent = '-' + outputNum 
+        //     else{
+        //         output.textContent = '+' + outputNum   
+        //     }
+        // }
+        if (action === 'minus') {
+            output.textContent = outputNum + '-'
+        } if (action === 'plus') {
+            output.textContent = outputNum + '+'
+        }
+        if (action === 'multiply') {
+            output.textContent = outputNum + '*';
+        }
+        if (action === 'divide') {
+            output.textContent = outputNum + '/'
+        }
         // if (!action) {
         //     if (displayedNum === '0') {
 
@@ -48,8 +81,8 @@ inputs.addEventListener('click', e => {
         //     console.log('clear')
         // }
         // if (action === 'delete') {
-        //     console.log('delete')
-        // }
+        //     console.log('delete')}
+
     }
 })
 
