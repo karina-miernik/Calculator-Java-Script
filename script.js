@@ -34,7 +34,12 @@ inputs.addEventListener('click', (e) => {
 
         }
         if (action === 'percent') {
-            output.textContent = outputNum + '%'
+
+            if (outputNum === '0') {
+                output.textContent = '%'
+            } else {
+                output.textContent = outputNum + '%'
+            }
         }
         // if (action === 'plusmin') {
         //     if(outputNum>0)
