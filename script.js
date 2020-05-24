@@ -1,6 +1,35 @@
 const calculator = document.querySelector('.calculator')
 const output = calculator.querySelector('.calculator__output')
 const inputs = calculator.querySelector('.calculator__input')
+const previousOutput = calculator.querySelector('.calculator__prev-output')
+const calculate = (number1, operator, number2) => {
+    let result = ''
+
+
+    if (operator === 'plus') {
+
+        result = number1 + number2;
+    }
+    if (operator === 'minus') {
+
+        result = number1 - number2;
+    }
+    if (operator === 'multiply') {
+
+        result = number1 * number2;
+    }
+    if (operator === 'divide') {
+
+        result = number1 / number2;
+    }
+    if (operator === 'percent') {
+
+        result = number1 * 100;
+    }
+
+    return result
+}
+
 
 inputs.addEventListener('click', (e) => {
     if (e.target.matches('button')) {
@@ -8,7 +37,8 @@ inputs.addEventListener('click', (e) => {
         const action = input.dataset.action
         const inputContent = input.textContent
         const outputNum = output.textContent
-
+        const previous = output.textContent.toString().slice(-1);
+        console.log(previous)
         if (!action) {
             if (outputNum === '0') {
                 output.textContent = inputContent
@@ -16,12 +46,22 @@ inputs.addEventListener('click', (e) => {
                 output.textContent = outputNum + inputContent
             }
         }
+        if (
+            action === 'plus' ||
+            action === 'minus' ||
+            action === 'multiply' ||
+            action === 'divide' ||
+            action === 'percent'
+        ) {
+            previousOutput = outputNum;
+            // calculator.dataset.previousInput = 'operator';
+            // const previousInput = calculator.dataset.previousInput;
+            // calculator.dataset.operator = action;
 
-        if (action === 'decimal') {
+        }
+        if (action === 'decimal' && previous !== '.') {
 
-            const d = outputNum.toString();
-            if (!d.includes('.'))
-                output.textContent = outputNum + '.'
+            output.textContent = outputNum + '.'
         }
 
         if (action === 'clear') {
@@ -46,61 +86,36 @@ inputs.addEventListener('click', (e) => {
         if (action === 'plusmin') {
             if (outputNum === '0') {
                 output.textContent = '-'
-
             }
             else {
+
                 // poprawić później
                 output.textContent = outputNum * -1;
             }
         }
 
-        if (action === 'minus') {
+        if (action === 'minus' && previous !== '-') {
             if (outputNum === '0') {
                 output.textContent = '-'
             } else {
                 output.textContent = outputNum + '-'
             }
         }
-        if (action === 'plus' && outputNum !== '0') {
+        if (action === 'plus' && previous !== '+') {
             output.textContent = outputNum + '+'
         }
-        if (action === 'multiply' && outputNum !== '0') {
+        if (action === 'multiply' && previous !== '*') {
             output.textContent = outputNum + '*'
         }
-        if (action === 'divide' && outputNum !== '0') {
+        if (action === 'divide' && previous !== '/') {
             output.textContent = outputNum + '/'
         }
-        // if (!action) {
-        //     if (displayedNum === '0') {
 
-        //         display.textContent = keyContent;
+        if (action === 'equal') {
 
-        //     } else {
 
-        //         display.textContent = displayedNum + keyContent;
-        //     }
-        // }
+            output.textContent = calculate(number1, operator, number2)
+        }
 
-        // if (
-        //     action === 'multiply' ||
-        //     action === 'divide' ||
-        //     action === 'minus' ||
-        //     action === 'plus' ||
-        //     action === 'multiply' ||
-        //     action === 'percent' ||
-        //     action === 'plus-min') {
-        //     console.log('math')
-        // }
-        // if (action === 'decimal') {
-        //     console.log('decimal')
-        // }
-        // if (action === 'equal') {
-        //     console.log('equal')
-        // }
-        // if (action === 'clear') {
-        //     console.log('clear')
-        // }
-        // if (action === 'delete') {
-        //     console.log('delete')}
     }
 })
