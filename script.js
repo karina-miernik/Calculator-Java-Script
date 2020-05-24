@@ -2,8 +2,7 @@ const calculator = document.querySelector('.calculator')
 const output = calculator.querySelector('.calculator__output')
 const inputs = calculator.querySelector('.calculator__input')
 
-
-inputs.addEventListener('click', e => {
+inputs.addEventListener('click', (e) => {
     if (e.target.matches('button')) {
         const input = e.target
         const action = input.dataset.action
@@ -19,33 +18,43 @@ inputs.addEventListener('click', e => {
         }
 
         if (action === 'decimal') {
+            /// trzeba dodać że tylko raz 
             output.textContent = outputNum + '.'
         }
 
         if (action === 'clear') {
-            output.textContent = '0';
+            output.textContent = '0'
         }
 
         if (action === 'delete') {
-            console.log('delete')
+            const s = outputNum.toString();
+            const deletedOutput = s.slice(0, -1)
+            output.textContent = deletedOutput;
+
+
         }
         if (action === 'percent') {
             output.textContent = outputNum + '%'
         }
         // if (action === 'plusmin') {
         //     if(outputNum>0)
-        //     output.textContent = '-' + outputNum 
+        //     output.textContent = '-' + outputNum
         //     else{
-        //         output.textContent = '+' + outputNum   
+        //         output.textContent = '+' + outputNum
         //     }
         // }
         if (action === 'minus') {
-            output.textContent = outputNum + '-'
-        } if (action === 'plus') {
+            if (outputNum === '0') {
+                output.textContent = '-'
+            } else {
+                output.textContent = outputNum + '-'
+            }
+        }
+        if (action === 'plus') {
             output.textContent = outputNum + '+'
         }
         if (action === 'multiply') {
-            output.textContent = outputNum + '*';
+            output.textContent = outputNum + '*'
         }
         if (action === 'divide') {
             output.textContent = outputNum + '/'
@@ -82,7 +91,5 @@ inputs.addEventListener('click', e => {
         // }
         // if (action === 'delete') {
         //     console.log('delete')}
-
     }
 })
-
