@@ -61,13 +61,13 @@ inputs.addEventListener('click', (e) => {
                 output.textContent = outputNum + '-'
             }
         }
-        if (action === 'plus') {
+        if (action === 'plus' && outputNum !== '0') {
             output.textContent = outputNum + '+'
         }
-        if (action === 'multiply') {
+        if (action === 'multiply' && outputNum !== '0') {
             output.textContent = outputNum + '*'
         }
-        if (action === 'divide') {
+        if (action === 'divide' && outputNum !== '0') {
             output.textContent = outputNum + '/'
         }
         // if (!action) {
