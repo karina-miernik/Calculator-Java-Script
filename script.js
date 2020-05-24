@@ -18,8 +18,10 @@ inputs.addEventListener('click', (e) => {
         }
 
         if (action === 'decimal') {
-            /// trzeba dodać że tylko raz 
-            output.textContent = outputNum + '.'
+
+            const d = outputNum.toString();
+            if (!d.includes('.'))
+                output.textContent = outputNum + '.'
         }
 
         if (action === 'clear') {
@@ -38,16 +40,20 @@ inputs.addEventListener('click', (e) => {
             if (outputNum === '0') {
                 output.textContent = '%'
             } else {
-                output.textContent = outputNum + '%'
+                output.textContent = '%' + outputNum
             }
         }
-        // if (action === 'plusmin') {
-        //     if(outputNum>0)
-        //     output.textContent = '-' + outputNum
-        //     else{
-        //         output.textContent = '+' + outputNum
-        //     }
-        // }
+        if (action === 'plusmin') {
+            if (outputNum === '0') {
+                output.textContent = '-'
+
+            }
+            else {
+                // poprawić później
+                output.textContent = outputNum * -1;
+            }
+        }
+
         if (action === 'minus') {
             if (outputNum === '0') {
                 output.textContent = '-'
