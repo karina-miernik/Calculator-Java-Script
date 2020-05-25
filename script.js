@@ -2,49 +2,55 @@ const calculator = document.querySelector('.calculator')
 const output = calculator.querySelector('.calculator__output')
 const inputs = calculator.querySelector('.calculator__input')
 const previousOutput = calculator.querySelector('.calculator__prev-output')
-const calculate = (number1, operator, number2) => {
-    let result = ''
 
+
+const calculate = (number1, operator, number2) => {
+
+    let result = ''
 
     if (operator === 'plus') {
 
-        result = number1 + number2;
+        result = parseFloat(number1) + parseFloat(number2);
     }
     if (operator === 'minus') {
 
-        result = number1 - number2;
+        result = parseFloat(number1) - parseFloat(number2);
     }
     if (operator === 'multiply') {
 
-        result = number1 * number2;
+        result = parseFloat(number1) * parseFloat(number2);
     }
-    if (operator === 'divide') {
+    if (operator === 'divide' && parseFloat(number2) !== 0) {
 
-        result = number1 / number2;
+        result = parseFloat(number1) / parseFloat(number2);
     }
     if (operator === 'percent') {
 
-        result = number1 * 100;
+        result = parseFloat(number1) * 100;
     }
 
     return result
 }
 
 
-inputs.addEventListener('click', (e) => {
+inputs.addEventListener('click', e => {
     if (e.target.matches('button')) {
         const input = e.target
         const action = input.dataset.action
         const inputContent = input.textContent
+
         const outputNum = output.textContent
         const previous = output.textContent.toString().slice(-1);
-        console.log(previous)
+        const previousInputType = calculator.dataset.previousInputType;
+
         if (!action) {
-            if (outputNum === '0') {
-                output.textContent = inputContent
-            } else {
+            if (outputNum === '0' || previousInputType === 'operator') {
+                output.textContent = inputContent;
+            }
+            else {
                 output.textContent = outputNum + inputContent
             }
+
         }
         if (
             action === 'plus' ||
@@ -53,10 +59,9 @@ inputs.addEventListener('click', (e) => {
             action === 'divide' ||
             action === 'percent'
         ) {
-            previousOutput = outputNum;
-            // calculator.dataset.previousInput = 'operator';
-            // const previousInput = calculator.dataset.previousInput;
-            // calculator.dataset.operator = action;
+            calculator.dataset.previousInputType = 'operator'
+            calculator.dataset.number1 = outputNum
+            calculator.dataset.operator = action
 
         }
         if (action === 'decimal' && previous !== '.') {
@@ -111,11 +116,20 @@ inputs.addEventListener('click', (e) => {
             output.textContent = outputNum + '/'
         }
 
-        if (action === 'equal') {
-
+        if (action === 'calculate') {
+            const number1 = calculator.dataset.number1
+            const operator = calculator.dataset.operator
+            const number2 = outputNum
 
             output.textContent = calculate(number1, operator, number2)
         }
 
     }
 })
+
+
+// 1. wpisuje liczbe
+//2. wpisuje operator
+//3. liczba po operatorze, 
+//4. całość wyżej
+//albo proces na nowo albo równa się --- wynik na górze
