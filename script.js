@@ -12,19 +12,19 @@ const calculate = (number1, operator, number2) => {
 
         result = parseFloat(number1) + parseFloat(number2);
     }
-    if (operator === 'minus') {
+    else if (operator === 'minus') {
 
         result = parseFloat(number1) - parseFloat(number2);
     }
-    if (operator === 'multiply') {
+    else if (operator === 'multiply') {
 
         result = parseFloat(number1) * parseFloat(number2);
     }
-    if (operator === 'divide' && parseFloat(number2) !== 0) {
+    else if (operator === 'divide' && parseFloat(number2) !== 0) {
 
         result = parseFloat(number1) / parseFloat(number2);
     }
-    if (operator === 'percent') {
+    else if (operator === 'percent') {
 
         result = parseFloat(number1) * 100;
     }
@@ -41,17 +41,17 @@ inputs.addEventListener('click', e => {
 
         const outputNum = output.textContent
         const previous = output.textContent.toString().slice(-1);
+
         const previousInputType = calculator.dataset.previousInputType;
 
         if (!action) {
             if (outputNum === '0' || previousInputType === 'operator') {
                 output.textContent = inputContent;
-            }
-            else {
+            } else {
                 output.textContent = outputNum + inputContent
             }
-
         }
+
         if (
             action === 'plus' ||
             action === 'minus' ||
@@ -65,7 +65,6 @@ inputs.addEventListener('click', e => {
 
         }
         if (action === 'decimal' && previous !== '.') {
-
             output.textContent = outputNum + '.'
         }
 
@@ -128,8 +127,3 @@ inputs.addEventListener('click', e => {
 })
 
 
-// 1. wpisuje liczbe
-//2. wpisuje operator
-//3. liczba po operatorze, 
-//4. całość wyżej
-//albo proces na nowo albo równa się --- wynik na górze
