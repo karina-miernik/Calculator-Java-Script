@@ -37,12 +37,12 @@ body {
   grid-column: 1 / -1;
   font-size: 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: column;
   align-items: flex-end;
   text-align: end;
   padding: 2rem;
-  color: rgb(28, 98, 119);
+  color: rgb(13, 53, 65);
   word-wrap: break-word;
   word-break: break-all;
 }
@@ -58,4 +58,9 @@ body {
 
 .calculator > button:hover {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.previous {
+  color: rgb(32, 113, 138);
+  font-size: 1.5rem;
 }
