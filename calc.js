@@ -43,9 +43,29 @@ class Calculator {
         const current = parseFloat(this.currentOutput)
         if (isNaN(previous) || isNaN(current)) return
         switch (this.operation) {
-            case
-}
+            case '+':
+                result = previous + current;
+                break
+            case '-':
+                result = previous - current;
+                break
+            case '*':
+                result = previous * current;
+                break
+            case '÷':
+                result = previous / current;
+                break
+            case '%':
+                result = previous * 0.01;
+                break
+            default:
+                return;
+        }
+        this.currentOutput = result;
+        this.operation = undefined
+        this.previousOutput = '';
     }
+
 
 }
 
@@ -72,13 +92,13 @@ numberBtn.forEach(button => {
 
 
 // EventListener for clear
-clearBtn.addEventListener('click', () => {
+clearBtn.addEventListener('click', button => {
     calculator.clear()
     calculator.display()
 })
 
 // EventListener for delete
-deleteBtn.addEventListener('click', () => {
+deleteBtn.addEventListener('click', button => {
     calculator.delete()
     calculator.display()
 })
@@ -92,7 +112,7 @@ operationBtn.forEach(button => {
 })
 
 // EventListener for equal button
-equal.addEventListener('click', () => {
+equalBtn.addEventListener('click', button => {
     calculator.calc()
     calculator.display()
 })
