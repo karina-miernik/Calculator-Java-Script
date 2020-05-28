@@ -4,10 +4,15 @@ class Calculator {
     constructor(previousOutputText, currentOutputText) {
         this.previousOutputText = previousOutputText;
         this.currentOutputText = currentOutputText;
+        this.clear()
     }
-
+    clear() {
+        this.currentOutput = '';
+        this.previousOutput = '';
+        this.operation = undefined
+    }
     addNumber(number) {
-        this.currentOutput = number
+        this.currentOutput = this.currentOutput.toString() + number.toString()
     }
 
     display() {
@@ -15,8 +20,6 @@ class Calculator {
     }
 
 }
-
-
 
 // DOM elements
 const numberBtn = document.querySelectorAll('[data-number]')
