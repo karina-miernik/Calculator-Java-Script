@@ -12,7 +12,9 @@ class Calculator {
         this.operation = undefined
     }
     addNumber(number) {
+        if (number === '.' && this.currentOutput.includes('.')) return
         this.currentOutput = this.currentOutput.toString() + number.toString()
+
     }
 
     display() {
