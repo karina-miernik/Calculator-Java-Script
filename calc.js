@@ -29,9 +29,22 @@ class Calculator {
 
     selectOperation(operation) {
         if (this.currentOutput === '') return
+        if (this.previousOutput !== '') {
+            this.calc()
+        }
         this.operation = operation;
         this.previousOutput = this.currentOutput;
         this.currentOutput = ''
+    }
+
+    calc() {
+        let result;
+        const previous = parseFloat(this.previousOutput)
+        const current = parseFloat(this.currentOutput)
+        if (isNaN(previous) || isNaN(current)) return
+        switch (this.operation) {
+            case
+}
     }
 
 }
@@ -76,4 +89,10 @@ operationBtn.forEach(button => {
         calculator.selectOperation(button.innerText)
         calculator.display()
     })
+})
+
+// EventListener for equal button
+equal.addEventListener('click', () => {
+    calculator.calc()
+    calculator.display()
 })
