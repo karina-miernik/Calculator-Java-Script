@@ -64,3 +64,7 @@ body {
   color: rgb(32, 113, 138);
   font-size: 1.5rem;
 }
+
+.equal{
+  grid-column: span 2;
+}
