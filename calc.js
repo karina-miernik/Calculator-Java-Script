@@ -42,3 +42,8 @@ numberBtn.forEach(button => {
         calculator.display()
     })
 })
+
+clearBtn.addEventListener('click', () => {
+    calculator.clear()
+    calculator.display()
+})
