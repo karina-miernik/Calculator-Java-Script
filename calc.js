@@ -24,6 +24,14 @@ class Calculator {
 
     display() {
         this.currentOutputText.innerText = this.currentOutput
+        this.previousOutputText.innerText = this.previousOutput;
+    }
+
+    selectOperation(operation) {
+        if (this.currentOutput === '') return
+        this.operation = operation;
+        this.previousOutput = this.currentOutput;
+        this.currentOutput = ''
     }
 
 }
@@ -37,10 +45,11 @@ const clearBtn = document.querySelector('[data-clear]')
 const previousOutputText = document.querySelector('[data-previous]')
 const currentOutputText = document.querySelector('[data-current]')
 
+// creating calculator
+
 const calculator = new Calculator(previousOutputText, currentOutputText)
 
 // EventListener for numbers
-
 numberBtn.forEach(button => {
     button.addEventListener('click', () => {
         calculator.addNumber(button.innerText)
@@ -48,12 +57,23 @@ numberBtn.forEach(button => {
     })
 })
 
+
+// EventListener for clear
 clearBtn.addEventListener('click', () => {
     calculator.clear()
     calculator.display()
 })
 
+// EventListener for delete
 deleteBtn.addEventListener('click', () => {
     calculator.delete()
     calculator.display()
+})
+
+// EventListener for math operators
+operationBtn.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.selectOperation(button.innerText)
+        calculator.display()
+    })
 })
