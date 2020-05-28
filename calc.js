@@ -11,6 +11,11 @@ class Calculator {
         this.previousOutput = '';
         this.operation = undefined
     }
+
+    delete() {
+        this.currentOutput = this.currentOutput.toString().slice(0, -1)
+    }
+
     addNumber(number) {
         if (number === '.' && this.currentOutput.includes('.')) return
         this.currentOutput = this.currentOutput.toString() + number.toString()
@@ -45,5 +50,10 @@ numberBtn.forEach(button => {
 
 clearBtn.addEventListener('click', () => {
     calculator.clear()
+    calculator.display()
+})
+
+deleteBtn.addEventListener('click', () => {
+    calculator.delete()
     calculator.display()
 })
