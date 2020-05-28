@@ -25,6 +25,9 @@ class Calculator {
     display() {
         this.currentOutputText.innerText = this.currentOutput
         this.previousOutputText.innerText = this.previousOutput;
+        if (this.operation != null) {
+            this.previousOutputText.innerText = `${this.previousOutput} ${this.operation}`
+        }
     }
 
     selectOperation(operation) {
@@ -42,6 +45,7 @@ class Calculator {
         const previous = parseFloat(this.previousOutput)
         const current = parseFloat(this.currentOutput)
         if (isNaN(previous) || isNaN(current)) return
+
         switch (this.operation) {
             case '+':
                 result = previous + current;
@@ -56,11 +60,13 @@ class Calculator {
                 result = previous / current;
                 break
             case '%':
-                result = previous * 0.01;
+                result = previous * 0.01
                 break
             default:
                 return;
         }
+
+
         this.currentOutput = result;
         this.operation = undefined
         this.previousOutput = '';
